@@ -26,3 +26,11 @@ on property:ro.boot.hw_region_id=21 && property:ro.boot.prjname=23801
 
 on property:ro.boot.hw_region_id=23 && property:ro.boot.prjname=23861
     setprop ro.boot.hardware.revision "NA"
+
+# xigua
+on property:ro.boot.prjname=22851
+    setprop ro.boot.hardware.revision "CN"
+
+on property:persist.xigua.1em_pulse=*
+    write /dev/kmsg "persist.xigua.1em_pulse changed: ${persist.xigua.1em_pulse}"
+    write /sys/kernel/oplus_display/pwm_onepulse ${persist.xigua.1em_pulse}
